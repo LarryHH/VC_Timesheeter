@@ -366,14 +366,11 @@ class WindowForm():
         self.canvas.itemconfig(self.entry_date_cell_label, text='Date Cell', fill='black')
         self.canvas.itemconfig(self.entry_output_label, text='Output Location', fill='black')
         self.canvas.itemconfig(self.entry_fm_label, text='First Monday', fill='black')
-        print('labels 1')
 
     def update_year_callbacks(self, sv):
         # output_fp and fm
         self.entry_output.delete(0, 'end')
         year = self.entry_year.get()
-        print(year)
-        print(type(year))
         output_location = Path(__file__).parent / Path(f"./{year}")
         output_location = WindowForm.find_valid_output_path(output_location, year)
         self.entry_output.insert('end', output_location)
@@ -408,7 +405,6 @@ class WindowForm():
         ts = Timesheeter((wb, self.entry_template.get(), self.entry_year.get(), self.fm_options.get(), self.entry_sheet.get(), self.entry_cell.get(), self.entry_output.get()))
         errs = ts.is_good_to_go()
         if errs:
-            print('errs')
             print(errs)
             for e in errs:
                 if e == 'output_location':
