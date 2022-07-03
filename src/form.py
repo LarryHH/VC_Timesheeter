@@ -3,6 +3,7 @@ from os import path
 from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Button, PhotoImage, StringVar
 import tkinter.font
+import webbrowser
 
 from datetime import date, datetime, timedelta
 from timesheeter import Timesheeter
@@ -14,8 +15,6 @@ BUTTON_Y_OFFSET = 36
 
 # TODO: autoupdater ask gus
 # TODO: make sure styling is good
-# TODO: contact info, copyright, mailto
-# TODO: help pop-up
 
 class WindowForm():
     
@@ -182,6 +181,31 @@ class WindowForm():
             font=("Varela Round", 20 * -1)
         )
 
+        self.canvas.create_text(
+            26.0,
+            658.0,
+            anchor="nw",
+            text="Larry Huynh, 2022",
+            fill="#E2D7D4",
+            font=("Varela Round", 16 * -1)
+        )
+        def cb_github_link():
+            webbrowser.open_new(r"https://github.com/LarryHH/VC_Timesheeter")
+        self.github_link = Button(
+            borderwidth=0,
+            highlightthickness=0,
+            bg='#795c5f',
+            activebackground='#795c5f',
+            activeforeground='#795c5f',
+            command=cb_github_link
+        )        
+        self.github_icon = PhotoImage(file=WindowForm.relative_to_assets("github_logo.png")) # make sure to add "/" not "\"
+        self.github_link.config(image=self.github_icon)
+        self.github_link.place(
+            x=165.0,
+            y=648.0
+        )
+
     def fill_canvas_right(self, res, wb, date_sheet_name, date_cell):    
         template_file, year, first_monday, next_monday, output_location = res
         
@@ -191,6 +215,23 @@ class WindowForm():
         self.create_entry_image(700.0, 368)
         self.create_entry_image(700.0, 451)
         self.create_entry_image(700.0, 534)
+
+        def cb_instruction_link():
+            webbrowser.open_new(r"https://github.com/LarryHH/VC_Timesheeter#vc_timesheeter")
+        self.instruction_link = Button(
+            borderwidth=0,
+            highlightthickness=0,
+            bg='#fbf9f9',
+            activebackground='#fbf9f9',
+            activeforeground='#fbf9f9',
+            command=cb_instruction_link
+        )        
+        self.instruction_icon = PhotoImage(file=WindowForm.relative_to_assets("doubts-button_3.png")) # make sure to add "/" not "\"
+        self.instruction_link.config(image=self.instruction_icon)
+        self.instruction_link.place(
+            x=950.0,
+            y=20.0
+        )
 
         self.entry_template = Entry(
             bd=0,
@@ -291,7 +332,7 @@ class WindowForm():
         self.entry_fm_label = self.create_entry_text_label(490, 259.0, "First Monday")
 
         self.canvas.create_text(
-            490.0,
+            480.0,
             41.0,
             anchor="nw",
             text="Verify Fields:",

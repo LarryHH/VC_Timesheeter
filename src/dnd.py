@@ -1,12 +1,11 @@
 from pathlib import Path
-from tkinter import Tk, Canvas, Text, PhotoImage, WORD
+from tkinter import Tk, Canvas, Text, PhotoImage, Button, WORD
 import tkinter.font
 from tkinterdnd2 import *
 
 from openpyxl import load_workbook
 from form import WindowForm
-
-import pyglet
+import webbrowser
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).parents[1] / Path("./assets")
@@ -117,8 +116,30 @@ class WindowDnD():
             fill="#464749",
             font=("Varela Round", 20 * -1)
         )
-
-
+        self.canvas.create_text(
+            26.0,
+            658.0,
+            anchor="nw",
+            text="Larry Huynh, 2022",
+            fill="#E2D7D4",
+            font=("Varela Round", 16 * -1)
+        )
+        def cb_github_link():
+            webbrowser.open_new(r"https://github.com/LarryHH/VC_Timesheeter")
+        self.github_link = Button(
+            borderwidth=0,
+            highlightthickness=0,
+            bg='#795c5f',
+            activebackground='#795c5f',
+            activeforeground='#795c5f',
+            command=cb_github_link
+        )
+        self.github_icon = PhotoImage(file=WindowDnD.relative_to_assets("github_logo.png")) # make sure to add "/" not "\"
+        self.github_link.config(image=self.github_icon)
+        self.github_link.place(
+            x=165.0,
+            y=648.0
+        )
 
     def fill_canvas_right(self):
         self.dnd_img = PhotoImage(
