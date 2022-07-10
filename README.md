@@ -1,7 +1,7 @@
 <p align="center">
   <h1 align="left" style="margin: 0 auto 0 auto;">V&C Timesheeter</h1>
   <h3 align="left" style="margin: 0 auto 0 auto;">Automated Excel Timesheet Creation</h3>
-  <h5 align="left" style="margin: 0 auto 0 auto;">Developed for Vim & Co.</h5>
+  <p align="left" style="margin: 0 auto 0 auto;">Developed for Vim & Co.</p>
 </p>
 
 <p align="left">
