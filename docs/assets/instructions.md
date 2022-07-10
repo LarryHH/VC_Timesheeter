@@ -21,6 +21,6 @@
 # Prerequisites <small>[[↑](#table-of-contents)]</small>
 
 - Windows 10 or later
-- Installed Custom Font: [Engravers Gothic](https://www.dafontfree.net/engraversgothic-bt-regular/f123235.htm)
+- Installed Custom Font: [Engravers Gothic BT Regular](https://www.dafontfree.net/engraversgothic-bt-regular/f123235.htm)
 
 # Template Excel File <small>[[↑](#table-of-contents)]</small>
