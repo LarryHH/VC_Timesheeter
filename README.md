@@ -43,7 +43,7 @@ If you do not have a provided copy of the `timesheeter.exe` program, you can eit
 1. Clone this repo and do `pip install -r requirements.txt`
 2. Run `pyinstaller ...`
 
-## 📧 Contact Me
+## ✉️ Contact Me
 
 If you need to reach me, feel free at larryhiehuynh@gmail.com
 
