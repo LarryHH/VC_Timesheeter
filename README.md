@@ -25,7 +25,7 @@ Simply supply a blank timesheet timeplate with the required updates and V&C Time
   <img src="/docs/assets/basic_usage.gif" width="80%" height="80%" alt="animated" />
 </p>
 
-## 📔 Detailed Usage Instructions: Read them here! → [Documentation](https://github.com/LarryHH/VC_Timesheeter/blob/master/docs/instructions.md)
+## 📔 Detailed Usage [Instructions](https://github.com/LarryHH/VC_Timesheeter/blob/master/docs/instructions.md) ← Read them here!
 
 ## ⚡️ Quick Start
 
