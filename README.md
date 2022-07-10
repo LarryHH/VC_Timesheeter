@@ -18,7 +18,7 @@ ___
 The V&C Timesheeter allows for template-based, automated creation of Excel timesheets. Future timesheets may need to be dupplicated, edited or adjusted for various reasons, and the manual creation and updating of these timesheets can be a labourous task. V&C Timehsheeter saves the user time and effort by automating this process. Simply supply a blank timesheet timeplate with the required updates and V&C Timesheeter will produce a full set of updated timesheets for the given period. 
 
 <p align="center">
-  <img src="/docs/assets/basic_usage.gif" alt="animated" />
+  <img src="/docs/assets/basic_usage.gif" width="150" height="150" alt="animated" />
 </p>
 
 ## 📔 Detailed Usage Instructions: Read them here! → Documentation
