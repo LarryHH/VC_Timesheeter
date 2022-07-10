@@ -18,6 +18,7 @@ ___
 The V&C Timesheeter allows for template-based, automated creation of Excel timesheets. The manual creation or duplication of timesheets for the correct payroll period can be a labourous task. Further, future timesheets may need to be duplicated, edited or adjusted for various reasons, which compounds this labour by many magnitudes. The V&C Timehsheeter saves the user time and effort by automating this process:
 - Now, timesheets are created with the correct payroll dates for the whole year all at once.
 - Any updates to timesheets only need to be applied once, rather than for every subsequent timesheet.
+
 Simply supply a blank timesheet timeplate with the required updates and V&C Timesheeter will produce a full set of updated timesheets for the given period. 
 
 <p align="center">
