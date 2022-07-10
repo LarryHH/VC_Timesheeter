@@ -7,7 +7,7 @@
 2. [**Template Excel File**](excel)
    1. [Accepted File Types](#excel-1)
    2. [Template File Contents](#excel-2)
-   3. [Updates to Template File](#excel-3)
+   3. [Updating the Template File](#excel-3)
 
 3. [**UI - Drag and Drop Window**](#dnd)
    1. [Inputting Your File](#dnd-1)
