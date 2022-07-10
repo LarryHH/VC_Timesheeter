@@ -39,11 +39,12 @@ Simply supply a blank timesheet timeplate with the required updates and V&C Time
 
 ### Compiling `timesheeter.exe` (For Developers)
 
-If you do not have a provided copy of the `timesheeter.exe` program, you can either compile your own or contact the developer and request a new copy.
+If you do not have a provided copy of the `timesheeter.exe` program, you can either compile your own or [contact the developer](#contact) and request a new copy.
 1. Clone this repo and do `pip install -r requirements.txt`
 2. Run `pyinstaller ...`
 
 ## ✉️ Contact Me
+<a id="contact"></a>
 
 If you need to reach me, feel free at larryhiehuynh@gmail.com
 
