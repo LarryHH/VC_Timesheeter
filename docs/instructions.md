@@ -1,6 +1,6 @@
 # How to use V&C Timesheeter
 
-### [Homepage](https://github.com/LarryHH/VC_Timesheeter/blob/master/README.md)
+### [>> Homepage](https://github.com/LarryHH/VC_Timesheeter/blob/master/README.md)
 
 ## Table of Contents
 
