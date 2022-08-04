@@ -1,3 +1,4 @@
+import os, sys
 from pathlib import Path
 from tkinter import Tk, Canvas, Text, PhotoImage, Button, WORD
 import tkinter.font
@@ -7,19 +8,14 @@ from openpyxl import load_workbook
 from form import WindowForm
 import webbrowser
 
-OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = Path(__file__).parents[1] / Path("./assets")
-FONTS_PATH = Path(__file__).parents[1] / Path("./fonts")
-
+ASSETS_PATH = os.path.join(os.path.abspath('.'), 'assets\\')
 BUTTON_Y_OFFSET = 36
-
-
 
 class WindowDnD():
 
     @staticmethod
-    def relative_to_assets(path: str) -> Path:
-        return f'{ASSETS_PATH / Path(path)}'
+    def relative_to_assets(path: str):
+        return os.path.join(ASSETS_PATH, path)
 
     def __init__(self) -> None:
         self.window = Tk()
@@ -34,6 +30,7 @@ class WindowDnD():
         )
         self.canvas.place(x = 0, y = 0)
 
+        print(WindowDnD.relative_to_assets("bg_left.png"))
         self.bg_left = PhotoImage(
             file=WindowDnD.relative_to_assets("bg_left.png"))
         self.canvas.create_image(
@@ -59,22 +56,6 @@ class WindowDnD():
         self.window.resizable(False, False)
 
     def fill_canvas_left(self):
-        # self.canvas.create_text(
-        #     104.0,
-        #     176.0,
-        #     anchor="nw",
-        #     text="Timesheeter",
-        #     fill="#464749",
-        #     font=("VarelaRound Regular", 30 * -1)
-        # )
-        # self.image_logo = PhotoImage(
-        #     file=WindowDnD.relative_to_assets("logo.png"))
-        # self.canvas.create_image(
-        #     198.0,
-        #     137.0,
-        #     image=self.image_logo
-        # )
-
         self.canvas.create_text(
             84.0,
             116.0,
@@ -142,6 +123,7 @@ class WindowDnD():
         )
 
     def fill_canvas_right(self):
+        print(WindowDnD.relative_to_assets("dnd_area.png"))
         self.dnd_img = PhotoImage(
             file=WindowDnD.relative_to_assets("dnd_area.png"))
         self.dnd_bg = self.canvas.create_image(

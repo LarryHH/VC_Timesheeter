@@ -1,3 +1,4 @@
+import os
 import os.path
 from os import path
 from pathlib import Path
@@ -8,9 +9,7 @@ import webbrowser
 from datetime import date, datetime, timedelta
 from timesheeter import Timesheeter
 
-OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = Path(__file__).parents[1] / Path("./assets")
-FONTS_PATH = Path(__file__).parents[1] / Path("./fonts")
+ASSETS_PATH = os.path.join(os.path.abspath('.'), 'assets\\')
 BUTTON_Y_OFFSET = 36
 
 # TODO: autoupdater ask gus
@@ -20,7 +19,7 @@ class WindowForm():
     
     @staticmethod
     def relative_to_assets(path: str) -> Path:
-        return f'{ASSETS_PATH / Path(path)}'
+        return os.path.join(ASSETS_PATH, path)
 
     @staticmethod
     def first_monday_calc(year):
@@ -108,22 +107,6 @@ class WindowForm():
         return template_file, year, first_monday, next_monday, output_location
 
     def fill_canvas_left(self):
-
-        # self.canvas.create_text(
-        #     104.0,
-        #     176.0,
-        #     anchor="nw",
-        #     text="Timesheeter",
-        #     fill="#464749",
-        #     font=("Varela Round", 20 * -1)
-        # )
-        # self.image_logo = PhotoImage(
-        #     file=WindowForm.relative_to_assets("logo.png"))
-        # self.canvas.create_image(
-        #     198.0,
-        #     137.0,
-        #     image=self.image_logo
-        # )
         self.canvas.create_text(
             84.0,
             116.0,
@@ -371,7 +354,8 @@ class WindowForm():
         # output_fp and fm
         self.entry_output.delete(0, 'end')
         year = self.entry_year.get()
-        output_location = Path(__file__).parent / Path(f"./{year}")
+
+        output_location = os.path.dirname(os.path.abspath(__file__)) + f"\\{year}"
         output_location = WindowForm.find_valid_output_path(output_location, year)
         self.entry_output.insert('end', output_location)
 
@@ -383,8 +367,6 @@ class WindowForm():
 
         for d in [first_monday, next_monday]:
             self.entry_monday['menu'].add_command(label=d, command= lambda d=d: self.fm_options.set(d))
-
-        #self.entry_monday = tkinter.OptionMenu(self.window, self.fm_options, *[first_monday, next_monday])
 
     def button_processing(self):
         self.button_go['text'] = 'Processing...'
