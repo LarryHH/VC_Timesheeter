@@ -124,6 +124,7 @@ Below is an example directory tree structure for the inputs of:
 - `Year`: 2022
 - `First Monday`: 2022-01-03
 
+```
 ├───01 JAN
 │       01 3 JAN - 16 JAN.xlsx
 │       02 17 JAN - 30 JAN.xlsx
@@ -173,3 +174,4 @@ Below is an example directory tree structure for the inputs of:
 └───12 DEC
         01 5 DEC - 18 DEC.xlsx
         02 19 DEC - 1 JAN.xlsx
+```
