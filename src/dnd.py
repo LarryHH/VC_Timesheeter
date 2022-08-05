@@ -1,7 +1,5 @@
 import os, sys
-from pathlib import Path
 from tkinter import Tk, Canvas, Text, PhotoImage, Button, WORD
-import tkinter.font
 from tkinterdnd2 import *
 
 from openpyxl import load_workbook
@@ -126,6 +124,23 @@ class WindowDnD():
         )
 
     def fill_canvas_right(self):
+        def cb_instruction_link():
+            webbrowser.open_new(r"https://github.com/LarryHH/VC_Timesheeter/blob/master/docs/instructions.md")
+        self.instruction_link = Button(
+            borderwidth=0,
+            highlightthickness=0,
+            bg='#fbf9f9',
+            activebackground='#fbf9f9',
+            activeforeground='#fbf9f9',
+            command=cb_instruction_link
+        )        
+        self.instruction_icon = PhotoImage(file=WindowForm.relative_to_assets("doubts-button_3.png")) # make sure to add "/" not "\"
+        self.instruction_link.config(image=self.instruction_icon)
+        self.instruction_link.place(
+            x=950.0,
+            y=20.0
+        )
+
         self.dnd_img = PhotoImage(
             file=WindowDnD.relative_to_assets("dnd_area.png"))
         self.dnd_bg = self.canvas.create_image(
