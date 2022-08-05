@@ -62,7 +62,7 @@ DO NOT edit the following:
 <a id="dnd"></a>
 # 3. UI - Drag and Drop Window <small>[[↑](#table-of-contents)]</small>
 <p align="center">
-  <img src="/assets/dnd_usage_1.png"/>
+  <img src="assets/dnd_usage_1.png"/>
 </p>
 
 The Drag and Drop Window serves as the entry point for supplying the `template.xlsx` file into the program. The window consists of the following elements
@@ -73,7 +73,7 @@ The Drag and Drop Window serves as the entry point for supplying the `template.x
 <a id="form"></a>
 # 4. UI - Form Window <small>[[↑](#table-of-contents)]</small>
 <p align="center">
-  <img src="/assets/form_usage_1.png"/>
+  <img src="assets/form_usage_1.png"/>
 </p>
 
 The Form Window allows the user to specify customisations for the outputted timesheets. 
