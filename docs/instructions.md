@@ -77,6 +77,7 @@ The Drag and Drop Window serves as the entry point for supplying the `template.x
 </p>
 
 The Form Window allows the user to specify customisations for the outputted timesheets. 
+<br>
 **NOTE:** For basic usage, only the `Year` and `First Monday` fields need to be edited.
 
 **Template File**
