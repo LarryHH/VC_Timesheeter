@@ -1,6 +1,4 @@
 from os import mkdir
-from os.path import isdir
-from pathlib import Path
 from  datetime import datetime, timedelta
 
 MONTHS = [
