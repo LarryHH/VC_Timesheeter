@@ -1,11 +1,3 @@
-# Copyright (C) Vim & Co. Pharmacy - All Rights Reserved
-# Unauthorized copying of this file, via any medium is strictly prohibited
-# Proprietary and confidential
-# Written by Larry Huynh <larryhieuhuynh@gmail.com>, Mar 2021
-# .exe builder Windows: pyinstaller --onefile timesheeter.py
-# 388392-79e6ebe5-f9b9-48be-b667-a54e7aca2904
-# https://www.figma.com/file/kHaFdxqlywPXgDDgx4iU12/VC_Timesheeter?node-id=0%3A1
-
 from os import mkdir
 from os.path import isdir
 from pathlib import Path
