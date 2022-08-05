@@ -245,6 +245,9 @@ class WindowDnD():
             if len(date_cells) > 1:
                 self.report_dnd_error(f"The '{date_sheet_name}' sheet has multiple cells with dates in them. Please ensure only one exists in the '{date_sheet_name}' sheet.")
                 return
+            elif len(date_cells) == 0:
+                self.report_dnd_error(f"The '{date_sheet_name}' sheet has 0 cells with dates in them. Please ensure one exists in the '{date_sheet_name}' sheet.")
+                return
             else:                        
                 date_cell = f'{date_cells[0].column_letter}{date_cells[0].row}'
                 self.dnd_area.insert('end', date_cell)
