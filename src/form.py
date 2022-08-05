@@ -9,11 +9,14 @@ import webbrowser
 from datetime import date, datetime, timedelta
 from timesheeter import Timesheeter
 
-ASSETS_PATH = os.path.join(os.path.abspath('.'), 'assets\\')
-BUTTON_Y_OFFSET = 36
+import sys, os
+if getattr(sys, 'frozen', False):
+    application_path = sys._MEIPASS
+else:
+    application_path = os.path.dirname(os.path.abspath(__file__))
 
-# TODO: autoupdater ask gus
-# TODO: make sure styling is good
+ASSETS_PATH = os.path.join(os.path.abspath(application_path), 'assets\\')
+BUTTON_Y_OFFSET = 36
 
 class WindowForm():
     
@@ -355,7 +358,7 @@ class WindowForm():
         self.entry_output.delete(0, 'end')
         year = self.entry_year.get()
 
-        output_location = os.path.dirname(os.path.abspath(__file__)) + f"\\{year}"
+        output_location = os.path.dirname(sys.executable) + f"\\{year}"
         output_location = WindowForm.find_valid_output_path(output_location, year)
         self.entry_output.insert('end', output_location)
 

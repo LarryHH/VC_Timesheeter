@@ -8,7 +8,12 @@ from openpyxl import load_workbook
 from form import WindowForm
 import webbrowser
 
-ASSETS_PATH = os.path.join(os.path.abspath('.'), 'assets\\')
+if getattr(sys, 'frozen', False):
+    application_path = sys._MEIPASS
+else:
+    application_path = os.path.dirname(os.path.abspath(__file__))
+
+ASSETS_PATH = os.path.join(os.path.abspath(application_path), 'assets\\')
 BUTTON_Y_OFFSET = 36
 
 class WindowDnD():
