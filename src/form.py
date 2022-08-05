@@ -15,6 +15,7 @@ else:
     application_path = os.path.dirname(os.path.abspath(__file__))
 
 ASSETS_PATH = os.path.join(os.path.abspath(application_path), 'assets\\')
+OUTPUT_PATH = os.path.dirname(sys.executable)
 BUTTON_Y_OFFSET = 36
 
 class WindowForm():
@@ -95,7 +96,7 @@ class WindowForm():
         i = 1
         while(path.exists(output_location)):
             if path.exists(output_location):
-                output_location = Path(__file__).parent / Path(f"./{year}_{i}")
+                output_location = OUTPUT_PATH + f"\\{year}_{i}"
                 i += 1
         return output_location
 
@@ -103,7 +104,7 @@ class WindowForm():
         template_file = file
         year = date.today().year
         first_monday, next_monday = WindowForm.first_monday_calc(year)
-        output_location = Path(__file__).parent / Path(f"./{year}")
+        output_location = OUTPUT_PATH + f"\\{year}"
         output_location = WindowForm.find_valid_output_path(output_location, year)
 
         return template_file, year, first_monday, next_monday, output_location
@@ -379,7 +380,7 @@ class WindowForm():
     def button_done(self, ts):
         while not ts.done:
             continue
-        self.button_go['text'] = 'Done! Exit now.'
+        self.button_go['text'] = 'Done! Exit now'
         self.button_go['cursor'] = 'arrow'
         self.button_go["state"] = "disabled"
         self.button_go.configure(bg='#efc4b8', fg='#FFFFFF', disabledforeground='#FFFFFF')
