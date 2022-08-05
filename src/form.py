@@ -1,4 +1,4 @@
-import os
+import os, sys
 import os.path
 from os import path
 from pathlib import Path
@@ -9,7 +9,6 @@ import webbrowser
 from datetime import date, datetime, timedelta
 from timesheeter import Timesheeter
 
-import sys, os
 if getattr(sys, 'frozen', False):
     application_path = sys._MEIPASS
 else:
@@ -166,7 +165,6 @@ class WindowForm():
             fill="#464749",
             font=("Varela Round", 20 * -1)
         )
-
         self.canvas.create_text(
             26.0,
             658.0,
@@ -203,7 +201,7 @@ class WindowForm():
         self.create_entry_image(700.0, 534)
 
         def cb_instruction_link():
-            webbrowser.open_new(r"https://github.com/LarryHH/VC_Timesheeter#vc_timesheeter")
+            webbrowser.open_new(r"https://github.com/LarryHH/VC_Timesheeter/blob/master/docs/instructions.md")
         self.instruction_link = Button(
             borderwidth=0,
             highlightthickness=0,
