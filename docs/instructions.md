@@ -62,10 +62,10 @@ DO NOT edit the following:
 <a id="dnd"></a>
 # 3. UI - Drag and Drop Window <small>[[↑](#table-of-contents)]</small>
 <p align="center">
-  <img src="/assets/dnd_usage_1.png"/>
+  <img src="assets/dnd_usage_1.png"/>
 </p>
 
-The Drag and Drop Window serves as the entry point for supplying the `template.xlsx` file into the program. The window consists of the following elements
+The Drag and Drop Window serves as the entry point for supplying the `template.xlsx` file into the program. The window consists of the following elements:
 1. The drag and drop space. Drag `template.xlsx` from your file explorer into the this space. You will then be presented with the Form Window.
 2. The Help Icon brings the user to this instructions site.
 3. The GitHub Icon brings the user to the repository mainpage.
@@ -73,10 +73,11 @@ The Drag and Drop Window serves as the entry point for supplying the `template.x
 <a id="form"></a>
 # 4. UI - Form Window <small>[[↑](#table-of-contents)]</small>
 <p align="center">
-  <img src="/assets/form_usage_1.png"/>
+  <img src="assets/form_usage_1.png"/>
 </p>
 
 The Form Window allows the user to specify customisations for the outputted timesheets. 
+<br>
 **NOTE:** For basic usage, only the `Year` and `First Monday` fields need to be edited.
 
 **Template File**
