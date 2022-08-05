@@ -1,10 +1,12 @@
 import os, sys
 from tkinter import Tk, Canvas, Text, PhotoImage, Button, WORD
 from tkinterdnd2 import *
+import tkinter.font
 
 from openpyxl import load_workbook
 from form import WindowForm
 import webbrowser
+import requests
 
 if getattr(sys, 'frozen', False):
     application_path = sys._MEIPASS
@@ -13,6 +15,8 @@ else:
 
 ASSETS_PATH = os.path.join(os.path.abspath(application_path), 'assets\\')
 BUTTON_Y_OFFSET = 36
+
+CURRENT_VERSION = "v1.1.1"
 
 class WindowDnD():
 
@@ -166,7 +170,6 @@ class WindowDnD():
         )
         self.dnd_area.image_create('end', image = self.dnd_icon_img)
 
-
         self.dnd_area.drop_target_register(DND_FILES)
         self.dnd_area.dnd_bind('<<Drop>>', self.drop_inside_textbox)
         self.dnd_area.configure(state='disabled')
@@ -179,6 +182,29 @@ class WindowDnD():
             fill="#464749",
             font=("VarelaRound Regular", 20 * -1)
         )
+
+        response = requests.get('https://api.github.com/repos/larryhh/VC_Timesheeter/releases/latest').json()
+        is_current_version = response["tag_name"] == CURRENT_VERSION
+        if not is_current_version:
+            download_link = response["assets"][0]["browser_download_url"]
+            button_update_available = Button(
+                borderwidth=0,
+                highlightthickness=0,
+                command=lambda:webbrowser.open(download_link),
+                relief="flat",
+                text='⚡Update available. Click here to download⚡',
+                bg='#efc4b8',
+                fg='white',
+                activebackground='#FDA48B',
+                activeforeground='#FFFFFF'
+            )
+            button_update_available['font'] = tkinter.font.Font(family='VarelaRound Regular', size=14)
+            button_update_available.place(
+                x=475.0,
+                y=604.0,
+                width=450.0,
+                height=50.0
+            )
 
     def report_dnd_error(self, msg):
         self.dnd_area.insert('end', msg)
