@@ -48,12 +48,14 @@ class Timesheeter():
         try:
             mkdir(self.fp_output)
         except FileExistsError as e:
-            self.ERRORS.append('output_location')
+            self.ERRORS.append('FileExistsError')
+        except FileNotFoundError as e:
+            self.ERRORS.append('FileNotFoundError')
         for month in MONTHS:
             try:
                 mkdir(f"{self.fp_output}/{month}")
             except OSError as e:
-                self.ERRORS.append('output_location')
+                self.ERRORS.append('OSError')
 
     def excel_name(self, date, index):
         """format excel filename based on timesheet range"""

@@ -387,10 +387,12 @@ class WindowForm():
         ts = Timesheeter((wb, self.entry_template.get(), self.entry_year.get(), self.fm_options.get(), self.entry_sheet.get(), self.entry_cell.get(), self.entry_output.get()))
         errs = ts.is_good_to_go()
         if errs:
-            print(errs)
-            for e in errs:
-                if e == 'output_location':
+            for e in list(set(errs)):
+                if e == 'FileExistsError' or e == 'OSError':
                     msg = f"Folder: {os.path.basename(os.path.normpath(self.entry_output.get()))} already exists in output location."
+                    self.canvas.itemconfig(self.entry_output_label, text=msg, fill='red')
+                if e == 'FileNotFoundError':
+                    msg = f"No such existing folder."
                     self.canvas.itemconfig(self.entry_output_label, text=msg, fill='red')
         else:
             self.restore_labels()
