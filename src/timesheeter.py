@@ -102,7 +102,6 @@ class Timesheeter():
     def is_good_to_go(self):
         print('attempting to execute...')
         self.construct_directories()
-        print(self.ERRORS)
         return list(set(self.ERRORS))
 
     def exec(self):

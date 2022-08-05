@@ -29,8 +29,6 @@ class WindowDnD():
             relief = "ridge"
         )
         self.canvas.place(x = 0, y = 0)
-
-        print(WindowDnD.relative_to_assets("bg_left.png"))
         self.bg_left = PhotoImage(
             file=WindowDnD.relative_to_assets("bg_left.png"))
         self.canvas.create_image(
@@ -123,7 +121,6 @@ class WindowDnD():
         )
 
     def fill_canvas_right(self):
-        print(WindowDnD.relative_to_assets("dnd_area.png"))
         self.dnd_img = PhotoImage(
             file=WindowDnD.relative_to_assets("dnd_area.png"))
         self.dnd_bg = self.canvas.create_image(
