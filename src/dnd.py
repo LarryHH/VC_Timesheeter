@@ -183,28 +183,31 @@ class WindowDnD():
             font=("VarelaRound Regular", 20 * -1)
         )
 
-        response = requests.get('https://api.github.com/repos/larryhh/VC_Timesheeter/releases/latest').json()
-        is_current_version = response["tag_name"] == CURRENT_VERSION
-        if not is_current_version:
-            download_link = response["assets"][0]["browser_download_url"]
-            button_update_available = Button(
-                borderwidth=0,
-                highlightthickness=0,
-                command=lambda:webbrowser.open(download_link),
-                relief="flat",
-                text='⚡Update available. Click here to download⚡',
-                bg='#efc4b8',
-                fg='white',
-                activebackground='#FDA48B',
-                activeforeground='#FFFFFF'
+        try:
+            response = requests.get('https://api.github.com/repos/larryhh/VC_Timesheeter/releases/latest').json()
+            is_current_version = response["tag_name"] == CURRENT_VERSION
+            if not is_current_version:
+                download_link = response["assets"][0]["browser_download_url"]
+                button_update_available = Button(
+                    borderwidth=0,
+                    highlightthickness=0,
+                    command=lambda:webbrowser.open(download_link),
+                    relief="flat",
+                    text='⚡Update available. Click here to download⚡',
+                    bg='#efc4b8',
+                    fg='white',
+                    activebackground='#FDA48B',
+                    activeforeground='#FFFFFF'
+                )
+                button_update_available['font'] = tkinter.font.Font(family='VarelaRound Regular', size=14)
+                button_update_available.place(
+                    x=475.0,
+                    y=604.0,
+                    width=450.0,
+                    height=50.0
             )
-            button_update_available['font'] = tkinter.font.Font(family='VarelaRound Regular', size=14)
-            button_update_available.place(
-                x=475.0,
-                y=604.0,
-                width=450.0,
-                height=50.0
-            )
+        except requests.ConnectionError as e:
+            print(e)
 
     def report_dnd_error(self, msg):
         self.dnd_area.insert('end', msg)
