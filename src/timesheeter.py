@@ -1,5 +1,5 @@
 from os import mkdir
-from  datetime import datetime, timedelta
+from datetime import datetime, timedelta
 
 MONTHS = [
     '01 JAN',
@@ -15,6 +15,7 @@ MONTHS = [
     '11 NOV',
     '12 DEC'
 ]
+
 
 class Timesheeter():
     """ timesheeter class """
@@ -85,7 +86,7 @@ class Timesheeter():
                             print(name)
                             self.excel_write(date, name)
                             index += 1
-                except Exception: # day out of range ( < 31)
+                except Exception:  # day out of range ( < 31)
                     continue
         return None
 
