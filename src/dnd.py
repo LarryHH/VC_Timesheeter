@@ -1,4 +1,5 @@
-import os, sys
+import os
+import sys
 from tkinter import Tk, Canvas, Text, PhotoImage, Button, WORD
 from tkinter.tix import Tree
 from tkinterdnd2 import *
@@ -19,6 +20,7 @@ BUTTON_Y_OFFSET = 36
 
 CURRENT_VERSION = "v1.1.3"
 
+
 class WindowDnD():
 
     @staticmethod
@@ -29,14 +31,14 @@ class WindowDnD():
         self.window = Tk()
         self.canvas = Canvas(
             self.window,
-            bg = "#E2D7D4",
-            height = 700,
-            width = 1000,
-            bd = 0,
-            highlightthickness = 0,
-            relief = "ridge"
+            bg="#E2D7D4",
+            height=700,
+            width=1000,
+            bd=0,
+            highlightthickness=0,
+            relief="ridge"
         )
-        self.canvas.place(x = 0, y = 0)
+        self.canvas.place(x=0, y=0)
         self.bg_left = PhotoImage(
             file=WindowDnD.relative_to_assets("bg_left.png"))
         self.canvas.create_image(
@@ -55,7 +57,7 @@ class WindowDnD():
 
         self.window.title('VC Timesheeter')
         self.window.geometry("1000x700")
-        self.window.configure(bg = "#E2D7D4")
+        self.window.configure(bg="#E2D7D4")
 
         self.fill_canvas_right()
         self.fill_canvas_left()
@@ -111,6 +113,7 @@ class WindowDnD():
             fill="#E2D7D4",
             font=("Varela Round", 16 * -1)
         )
+
         def cb_github_link():
             webbrowser.open_new(r"https://github.com/LarryHH/VC_Timesheeter")
         self.github_link = Button(
@@ -121,7 +124,8 @@ class WindowDnD():
             activeforeground='#795c5f',
             command=cb_github_link
         )
-        self.github_icon = PhotoImage(file=WindowDnD.relative_to_assets("github_logo.png")) # make sure to add "/" not "\"
+        self.github_icon = PhotoImage(file=WindowDnD.relative_to_assets(
+            "github_logo.png"))  # make sure to add "/" not "\"
         self.github_link.config(image=self.github_icon)
         self.github_link.place(
             x=165.0,
@@ -130,7 +134,8 @@ class WindowDnD():
 
     def fill_canvas_right(self):
         def cb_instruction_link():
-            webbrowser.open_new(r"https://github.com/LarryHH/VC_Timesheeter/blob/master/docs/instructions.md")
+            webbrowser.open_new(
+                r"https://github.com/LarryHH/VC_Timesheeter/blob/master/docs/instructions.md")
         self.instruction_link = Button(
             borderwidth=0,
             highlightthickness=0,
@@ -138,8 +143,9 @@ class WindowDnD():
             activebackground='#fbf9f9',
             activeforeground='#fbf9f9',
             command=cb_instruction_link
-        )        
-        self.instruction_icon = PhotoImage(file=WindowForm.relative_to_assets("doubts-button_3.png")) # make sure to add "/" not "\"
+        )
+        self.instruction_icon = PhotoImage(file=WindowForm.relative_to_assets(
+            "doubts-button_3.png"))  # make sure to add "/" not "\"
         self.instruction_link.config(image=self.instruction_icon)
         self.instruction_link.place(
             x=950.0,
@@ -152,7 +158,7 @@ class WindowDnD():
             700.5,
             394.5,
             image=self.dnd_img
-        )        
+        )
         self.dnd_icon_img = PhotoImage(
             file=WindowDnD.relative_to_assets("dnd_icon.png"))
 
@@ -169,7 +175,7 @@ class WindowDnD():
             width=400.0,
             height=350.0
         )
-        self.dnd_area.image_create('end', image = self.dnd_icon_img)
+        self.dnd_area.image_create('end', image=self.dnd_icon_img)
 
         self.dnd_area.drop_target_register(DND_FILES)
         self.dnd_area.dnd_bind('<<Drop>>', self.drop_inside_textbox)
@@ -185,7 +191,8 @@ class WindowDnD():
         )
 
         try:
-            response = requests.get('https://api.github.com/repos/larryhh/VC_Timesheeter/releases/latest').json()
+            response = requests.get(
+                'https://api.github.com/repos/larryhh/VC_Timesheeter/releases/latest').json()
             is_current_version = response["tag_name"] == CURRENT_VERSION
             download_link = response["assets"][0]["browser_download_url"]
         except requests.ConnectionError as e:
@@ -195,7 +202,7 @@ class WindowDnD():
             button_update_available = Button(
                 borderwidth=0,
                 highlightthickness=0,
-                command=lambda:webbrowser.open(download_link),
+                command=lambda: webbrowser.open(download_link),
                 relief="flat",
                 text='⚡Update available. Click here to download⚡',
                 bg='#efc4b8',
@@ -203,13 +210,14 @@ class WindowDnD():
                 activebackground='#FDA48B',
                 activeforeground='#FFFFFF'
             )
-            button_update_available['font'] = tkinter.font.Font(family='VarelaRound Regular', size=14)
+            button_update_available['font'] = tkinter.font.Font(
+                family='VarelaRound Regular', size=14)
             button_update_available.place(
                 x=475.0,
                 y=604.0,
                 width=450.0,
                 height=50.0
-        )
+            )
 
     def report_dnd_error(self, msg):
         self.dnd_area.insert('end', msg)
@@ -218,7 +226,7 @@ class WindowDnD():
     def drop_inside_textbox(self, event):
         self.dnd_area.configure(state='normal')
         self.dnd_area.delete('1.0', 'end')
-        
+
         files = event.data.split(':')
 
         if len(files) > 2:
@@ -234,7 +242,7 @@ class WindowDnD():
             self.dnd_area.insert('end', msg)
             self.dnd_area.configure(state='disabled')
             return
-        
+
         sheets = [s.lower() for s in wb.sheetnames]
         date_sheet_name = ''
         date_cells = []
@@ -248,20 +256,25 @@ class WindowDnD():
                         date_cells.append(cell)
             # should only be 1 date in date sheet
             if len(date_cells) > 1:
-                self.report_dnd_error(f"The '{date_sheet_name}' sheet has multiple cells with dates in them. Please ensure only one exists in the '{date_sheet_name}' sheet.")
+                self.report_dnd_error(
+                    f"The '{date_sheet_name}' sheet has multiple cells with dates in them. Please ensure only one exists in the '{date_sheet_name}' sheet.")
                 return
             elif len(date_cells) == 0:
-                self.report_dnd_error(f"The '{date_sheet_name}' sheet has 0 cells with dates in them. Please ensure one exists in the '{date_sheet_name}' sheet.")
+                self.report_dnd_error(
+                    f"The '{date_sheet_name}' sheet has 0 cells with dates in them. Please ensure one exists in the '{date_sheet_name}' sheet.")
                 return
-            else:                        
+            else:
                 date_cell = f'{date_cells[0].column_letter}{date_cells[0].row}'
                 self.dnd_area.insert('end', date_cell)
-        else: # date sheet must exist
-            self.report_dnd_error(f"The Excel file: {':'.join(files)} has no 'Date' sheet. Please make sure one exists in the template.")
+        else:  # date sheet must exist
+            self.report_dnd_error(
+                f"The Excel file: {':'.join(files)} has no 'Date' sheet. Please make sure one exists in the template.")
             return
 
         self.dnd_area.configure(state='disabled')
-        WindowForm(self.window, ":".join(files), wb, date_sheet_name, date_cell)
+        WindowForm(self.window, ":".join(files),
+                   wb, date_sheet_name, date_cell)
+
 
 if __name__ == "__main__":
     print("Opening VC_Timesheeter. Please wait...")
