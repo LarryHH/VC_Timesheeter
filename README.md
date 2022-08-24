@@ -32,7 +32,7 @@ Simply supply a blank timesheet timeplate with the required updates and V&C Time
 ### Basic Usage
 
 1. Prepare a `blank.xlsx` timesheet Excel file. This file should include a `Date` sheet with the timesheet period's `starting date`, where subsequent sheets will rely on this cell to create their date ranges.
-2. Download the [`VC_Timesheeter.exe`](https://github.com/LarryHH/VC_Timesheeter/raw/master/VC_Timesheeter.exe) program here or from the above sources.
+2. Download the [`VC_Timesheeter.exe`](https://github.com/LarryHH/VC_Timesheeter/releases/) program from the latest release.
 3. Make sure the provided or compiled `VC_Timesheeter.exe` program and your `blank.xlsx` file are in the same directory.
 4. Open `VC_Timesheeter.exe`, drag and drop `blank.xlsx` into the specified area.
 5. Edit the form fields as necessary (see Instructions for more info).
