@@ -16,7 +16,7 @@ else:
 ASSETS_PATH = os.path.join(os.path.abspath(application_path), 'assets\\')
 BUTTON_Y_OFFSET = 36
 
-CURRENT_VERSION = "v1.1.2"
+CURRENT_VERSION = "v1.1.3"
 
 class WindowDnD():
 
