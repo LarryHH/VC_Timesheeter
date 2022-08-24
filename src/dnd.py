@@ -16,6 +16,7 @@ else:
     application_path = os.path.dirname(os.path.abspath(__file__))
 
 ASSETS_PATH = os.path.join(os.path.abspath(application_path), 'assets\\')
+
 BUTTON_Y_OFFSET = 36
 
 CURRENT_VERSION = "v1.1.3"
@@ -55,7 +56,7 @@ class WindowDnD():
             fill="#FBF9F9",
             outline="")
 
-        self.window.title('VC Timesheeter')
+        self.window.title(f'VC Timesheeter {CURRENT_VERSION}')
         self.window.geometry("1000x700")
         self.window.configure(bg="#E2D7D4")
 
@@ -114,6 +115,15 @@ class WindowDnD():
             font=("Varela Round", 16 * -1)
         )
 
+        self.canvas.create_text(
+            330.0,
+            658.0,
+            anchor="nw",
+            text=f"{CURRENT_VERSION}",
+            fill="#E2D7D4",
+            font=("Varela Round", 16 * -1)
+        )
+
         def cb_github_link():
             webbrowser.open_new(r"https://github.com/LarryHH/VC_Timesheeter")
         self.github_link = Button(
@@ -144,7 +154,7 @@ class WindowDnD():
             activeforeground='#fbf9f9',
             command=cb_instruction_link
         )
-        self.instruction_icon = PhotoImage(file=WindowForm.relative_to_assets(
+        self.instruction_icon = PhotoImage(file=WindowDnD.relative_to_assets(
             "doubts-button_3.png"))  # make sure to add "/" not "\"
         self.instruction_link.config(image=self.instruction_icon)
         self.instruction_link.place(

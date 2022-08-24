@@ -65,9 +65,6 @@ class WindowForm():
             fill="#FBF9F9",
             outline="")
 
-        self.window.title('VC Timesheeter')
-        self.window.geometry("1000x700")
-        self.window.configure(bg="#E2D7D4")
         self.entry_image = PhotoImage(
             file=WindowForm.relative_to_assets("entry.png"))
 
@@ -177,6 +174,16 @@ class WindowForm():
             fill="#E2D7D4",
             font=("Varela Round", 16 * -1)
         )
+
+        self.canvas.create_text(
+            330.0,
+            658.0,
+            anchor="nw",
+            text=f"{self.window.title().split('VC Timesheeter ')[1]}",
+            fill="#E2D7D4",
+            font=("Varela Round", 16 * -1)
+        )
+
 
         def cb_github_link():
             webbrowser.open_new(r"https://github.com/LarryHH/VC_Timesheeter")
