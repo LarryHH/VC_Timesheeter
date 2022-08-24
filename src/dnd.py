@@ -262,5 +262,6 @@ class WindowDnD():
         WindowForm(self.window, ":".join(files), wb, date_sheet_name, date_cell)
 
 if __name__ == "__main__":
+    print("Opening VC_Timesheeter. Please wait...")
     dnd = WindowDnD()
     dnd.window.mainloop()
