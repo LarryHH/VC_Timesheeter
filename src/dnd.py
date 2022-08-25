@@ -4,11 +4,14 @@ from tkinter import Tk, Canvas, Text, PhotoImage, Button, WORD
 from tkinter.tix import Tree
 from tkinterdnd2 import *
 import tkinter.font
+from pyglet import font
 
 from openpyxl import load_workbook
 from form import WindowForm
 import webbrowser
 import requests
+
+CURRENT_VERSION = "v1.1.3"
 
 if getattr(sys, 'frozen', False):
     application_path = sys._MEIPASS
@@ -16,17 +19,18 @@ else:
     application_path = os.path.dirname(os.path.abspath(__file__))
 
 ASSETS_PATH = os.path.join(os.path.abspath(application_path), 'assets\\')
-
+FONTS_PATH = os.path.join(os.path.abspath(application_path), 'fonts\\')
 BUTTON_Y_OFFSET = 36
-
-CURRENT_VERSION = "v1.1.3"
-
 
 class WindowDnD():
 
     @staticmethod
     def relative_to_assets(path: str):
         return os.path.join(ASSETS_PATH, path)
+
+    @staticmethod
+    def load_font(path: str):
+        font.add_file(os.path.join(FONTS_PATH, path))
 
     def __init__(self) -> None:
         self.window = Tk()
@@ -59,6 +63,8 @@ class WindowDnD():
         self.window.title(f'VC Timesheeter {CURRENT_VERSION}')
         self.window.geometry("1000x700")
         self.window.configure(bg="#E2D7D4")
+
+        WindowDnD.load_font('EngraversGothicBT.ttf')
 
         self.fill_canvas_right()
         self.fill_canvas_left()
@@ -246,7 +252,8 @@ class WindowDnD():
             return
 
         try:
-            wb = load_workbook(filename=":".join(files))
+            filename = ":".join(files).strip("{").strip("}")
+            wb = load_workbook(filename=filename)
         except Exception:
             msg = f'The file: {":".join(files)} was not able to be loaded into the drag n\' drop area.\nAre you sure this is an Excel file?'
             self.dnd_area.insert('end', msg)
