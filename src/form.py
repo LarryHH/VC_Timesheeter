@@ -16,16 +16,16 @@ else:
     application_path = os.path.dirname(os.path.abspath(__file__))
 
 ASSETS_PATH = os.path.join(os.path.abspath(application_path), 'assets\\')
+FONTS_PATH = os.path.join(os.path.abspath(application_path), 'fonts\\')
 OUTPUT_PATH = os.path.dirname(sys.executable)
 BUTTON_Y_OFFSET = 36
-
 
 class WindowForm():
 
     @staticmethod
     def relative_to_assets(path: str) -> Path:
         return os.path.join(ASSETS_PATH, path)
-
+        
     @staticmethod
     def first_monday_calc(year):
         """calculate when the first Monday of the year is to correctly align fortnightly period"""

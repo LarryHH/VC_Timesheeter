@@ -13,7 +13,8 @@ added_files = [
          ('assets/entry.png', 'assets'),
          ('assets/github_logo.png', 'assets'),
          ('assets/logo.png', 'assets'),
-         ('assets/logo.svg', 'assets')
+         ('assets/logo.svg', 'assets'),
+         ('fonts/EngraversGothicBT.ttf', 'fonts')
 ]
 
 
