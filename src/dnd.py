@@ -1,5 +1,6 @@
 import os
 import sys
+from datetime import datetime
 from tkinter import Tk, Canvas, Text, PhotoImage, Button, WORD
 from tkinter.tix import Tree
 from tkinterdnd2 import *
@@ -117,7 +118,7 @@ class WindowDnD():
             26.0,
             658.0,
             anchor="nw",
-            text="Larry Huynh, 2022",
+            text=f"Larry Huynh, {datetime.now().year}",
             fill="#E2D7D4",
             font=("Varela Round", 16 * -1)
         )
