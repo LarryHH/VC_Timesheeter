@@ -11,7 +11,7 @@ from form import WindowForm
 import webbrowser
 import requests
 
-CURRENT_VERSION = "v1.2.0"
+CURRENT_VERSION = "v1.2.1"
 
 if getattr(sys, 'frozen', False):
     application_path = sys._MEIPASS
