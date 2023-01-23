@@ -22,7 +22,6 @@
 # 1. Prerequisites <small>[[↑](#table-of-contents)]</small>
 
 - Windows 10 or later
-- Installed Custom Font: [Engravers Gothic BT Regular](https://www.dafontfree.net/engraversgothic-bt-regular/f123235.htm)
 
 <a id="excel"></a>
 # 2. Template Excel File <small>[[↑](#table-of-contents)]</small>
