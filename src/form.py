@@ -20,6 +20,8 @@ FONTS_PATH = os.path.join(os.path.abspath(application_path), 'fonts\\')
 OUTPUT_PATH = os.path.dirname(sys.executable)
 BUTTON_Y_OFFSET = 36
 
+CB_COUNTER = 0
+
 class WindowForm():
 
     @staticmethod
@@ -213,6 +215,26 @@ class WindowForm():
         self.create_entry_image(700.0, 451)
         self.create_entry_image(700.0, 534)
 
+        self.button_go = Button(
+            borderwidth=0,
+            highlightthickness=0,
+            command=lambda: self.exec_timersheeter(wb),
+            relief="flat",
+            text='GO!',
+            bg='#efc4b8',
+            fg='white',
+            activebackground='#FDA48B',
+            activeforeground='#FFFFFF'
+        )
+        self.button_go['font'] = tkinter.font.Font(
+            family='VarelaRound Regular', size=30, weight='bold')
+        self.button_go.place(
+            x=475.0,
+            y=604.0,
+            width=450.0,
+            height=50.0
+        )
+
         def cb_instruction_link():
             webbrowser.open_new(
                 r"https://github.com/LarryHH/VC_Timesheeter/blob/master/docs/instructions.md")
@@ -278,6 +300,7 @@ class WindowForm():
             height=20
         )
         self.entry_sheet.insert('end', date_sheet_name)
+        self.entry_sheet.configure(state='disabled')
 
         self.entry_cell = Entry(
             bd=0,
@@ -292,6 +315,7 @@ class WindowForm():
             height=20
         )
         self.entry_cell.insert('end', date_cell)
+        self.entry_cell.configure(state='disabled')
 
         self.entry_output = Entry(
             bd=0,
@@ -347,25 +371,6 @@ class WindowForm():
             font=("VarelaRound Bold", 24 * -1)
         )
 
-        self.button_go = Button(
-            borderwidth=0,
-            highlightthickness=0,
-            command=lambda: self.exec_timersheeter(wb),
-            relief="flat",
-            text='GO!',
-            bg='#efc4b8',
-            fg='white',
-            activebackground='#FDA48B',
-            activeforeground='#FFFFFF'
-        )
-        self.button_go['font'] = tkinter.font.Font(
-            family='VarelaRound Regular', size=30, weight='bold')
-        self.button_go.place(
-            x=475.0,
-            y=604.0,
-            width=450.0,
-            height=50.0
-        )
 
     def restore_labels(self):
         self.canvas.itemconfig(self.entry_template_label,
@@ -383,8 +388,25 @@ class WindowForm():
 
     def update_year_callbacks(self, sv):
         # output_fp and fm
+        global CB_COUNTER
+        if CB_COUNTER == 0: # hacky suppress cb onload
+            CB_COUNTER += 1
+            return 
+
         self.entry_output.delete(0, 'end')
         year = self.entry_year.get()
+
+        try:
+            int(year)
+            datetime(int(year), 1, 1)
+            self.button_go["state"] = "normal"
+            self.restore_labels()
+            self.button_go.configure(bg='#efc4b8', fg='#FFFFFF', disabledforeground='#FFFFFF')
+        except Exception as e:
+            self.button_go["state"] = "disabled"
+            self.button_go.configure(bg="#d4d4d4", fg="black")
+            msg = f"Improper year: Year must be an integer" if "literal" in str(e) else f"Improper year: {e}"
+            self.canvas.itemconfig(self.entry_year_label, text=msg, fill='red')
 
         output_location = os.path.dirname(sys.executable) + f"\\{year}"
         output_location = WindowForm.find_valid_output_path(
@@ -414,14 +436,15 @@ class WindowForm():
             continue
         self.button_go['text'] = 'Done! Exit now'
         self.button_go['cursor'] = 'arrow'
-        self.button_go["state"] = "disabled"
+        self.button_go["state"] = "normal"
         self.button_go.configure(
-            bg='#efc4b8', fg='#FFFFFF', disabledforeground='#FFFFFF')
+            bg='#efc4b8', fg='#FFFFFF', activebackground='#FDA48B', activeforeground='#FFFFFF', command=lambda: self.window.destroy())
 
     def exec_timersheeter(self, wb):
         ts = Timesheeter((wb, self.entry_template.get(), self.entry_year.get(), self.fm_options.get(
         ), self.entry_sheet.get(), self.entry_cell.get(), self.entry_output.get()))
         errs = ts.is_good_to_go()
+
         if errs:
             for e in list(set(errs)):
                 if e == 'FileExistsError' or e == 'OSError':
@@ -435,7 +458,6 @@ class WindowForm():
         else:
             self.restore_labels()
             self.button_processing()
-
             self.canvas.after(500, lambda: ts.exec())
             self.canvas.after(500, lambda: self.button_done(ts))
 
