@@ -11,6 +11,7 @@ from form import WindowForm
 import webbrowser
 import requests
 
+# ⚡ IMPORTANT ⚡ version bump to match release number on github
 CURRENT_VERSION = "v1.2.1"
 
 if getattr(sys, 'frozen', False):
